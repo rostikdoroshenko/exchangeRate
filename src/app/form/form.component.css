@@ -1,0 +1,20 @@
+form {
+    margin: 30px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.form-row {
+    margin: 20px 10px;
+}
+
+button {
+  width: 120px;
+  height: 40px;
+  margin: 43px 10px;
+}
+
+input.ng-invalid.ng-touched, select.ng-invalid.ng-touched {
+  border: 1px solid red;
+}

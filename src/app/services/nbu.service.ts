@@ -4,8 +4,9 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class NbuService {
-    constructor(private httpclient: HttpClient) {}
-    getData() : Observable <any> {
-        return this.httpclient.get('https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?valcode=EUR&date=20200302&json')
+    constructor(private http: HttpClient) {}
+
+    public getData(cur: string = 'EUR', date: string = '20200302'): Observable <any> {
+        return this.http.get(`https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?valcode=${cur}&date=${date}&json`);
     }
 }

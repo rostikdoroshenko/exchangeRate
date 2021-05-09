@@ -1,0 +1,57 @@
+<form 
+  (ngSubmit)="onSubmit()"
+  #f="ngForm">
+  <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="inputStart">Start</label>
+        <input 
+          type="date" 
+          class="form-control" 
+          id="inputStart" 
+          placeholder="Start"
+          ngModel
+          name="inputStart"
+          required>
+      </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label for="inputEnd">End</label>
+      <input 
+        type="date" 
+        class="form-control" 
+        id="inputEnd" 
+        placeholder="End"
+        ngModel
+        name="inputEnd"
+        required>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label for="inputCur">Currency</label>
+      <select 
+        id="inputCur" 
+        class="form-select"
+        [ngModel]="defaultCurrency"
+        name="currency">
+          <option>EUR</option>
+          <option>USD</option>
+      </select>
+    </div>
+  </div>
+  <button
+      type="submit"
+      class="btn btn-info" 
+      [routerLink]="['chart']"
+      [disabled]="!f.valid"
+      (click)="onChartBtnClick()">Chart</button>
+  <button
+    type="submit"
+    class="btn btn-success"
+    routerLink="table"
+    [disabled]="!f.valid"
+    (click)="onTableBtnClick()">Table</button>
+</form>
+
+
