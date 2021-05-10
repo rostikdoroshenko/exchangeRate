@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NbuService } from '../services/nbu.service';
-import { combineAll, concatMap, delay, mergeAll, mergeMap, toArray } from 'rxjs/operators';
-import { forkJoin, from, interval, of, zip } from 'rxjs';
+import { concatMap, delay, toArray } from 'rxjs/operators';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-form',
@@ -43,7 +43,7 @@ export class FormComponent implements OnInit {
   private getExchangeRatesForSelectedPeriod(period: string[], currency: string): void {
     from(period)
         .pipe(
-            concatMap(date => this.nbuService.getData(currency, date).pipe(delay(1000))),
+            concatMap(date => this.nbuService.getData(currency, date).pipe(delay(500))),
             toArray()
         ).subscribe(result => {
           this.exchangeData = result;

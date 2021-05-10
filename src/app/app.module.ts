@@ -7,14 +7,12 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ChartComponent } from './chart/chart.component';
 import { NbuService } from './services/nbu.service';
-import { TableComponent } from './table/table.component';
 import { FormComponent } from './form/form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChartComponent,
-    TableComponent,
     FormComponent
   ],
   imports: [
