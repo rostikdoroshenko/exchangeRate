@@ -17,7 +17,7 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.completedForm);
+    console.log(this.completedForm.value.formData);
   }
 
   onChartBtnClick(): void {
