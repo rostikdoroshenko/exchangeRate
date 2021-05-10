@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import * as CanvasJS from '../chart/canvasjs.min';
 
 @Component({
@@ -6,13 +6,15 @@ import * as CanvasJS from '../chart/canvasjs.min';
   templateUrl: './chart.component.html'
 })
 
-export class ChartComponent implements OnInit {
-  ngOnInit(): void {
+export class ChartComponent implements OnInit, OnChanges {
+  @Input() exchangeData: any;
+
+  public ngOnInit(): void {
     const dataPoints = [];
     let y = 0;
     for ( let i = 0; i < 1000; i++ ) {
       y += Math.round(5 + Math.random() * (-5 - 5));
-      dataPoints.push({ y: y });
+      dataPoints.push({ y });
     }
     const chart = new CanvasJS.Chart('chartContainer', {
       zoomEnabled: true,
@@ -27,10 +29,14 @@ export class ChartComponent implements OnInit {
       data: [
       {
         type: 'line',
-        dataPoints: dataPoints
+        dataPoints
       }]
     });
 
     chart.render();
+  }
+
+  public ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
   }
 }
