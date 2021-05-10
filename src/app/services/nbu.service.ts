@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 export class NbuService {
     constructor(private http: HttpClient) {}
 
-    public getData(cur: string = 'EUR', date: string = '20200302'): Observable <any> {
-        return this.http.get(`https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?valcode=${cur}&date=${date}&json`);
+    public getData(curr: string = 'EUR', date: string = '20200302'): Observable <any> {
+        return this.http.get(`https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?valcode=${curr}&date=${date}&json`);
     }
 }

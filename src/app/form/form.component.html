@@ -16,6 +16,7 @@
           required>
       </div>
     </div>
+
     <div class="form-row">
       <div class="form-group col-md-12">
         <label for="inputEnd">End</label>
@@ -29,6 +30,7 @@
           required>
       </div>
     </div>
+
     <div class="form-row">
       <div class="form-group col-md-12">
         <label for="inputCur">Currency</label>
@@ -42,19 +44,21 @@
         </select>
       </div>
     </div>
+
     <button
         type="submit"
-        class="btn btn-info" 
-        [routerLink]="['chart']"
-        [disabled]="!f.valid"
-        (click)="onChartBtnClick()">Chart</button>
+        class="btn btn-info"
+        [disabled]="!f.valid">Chart</button>
+
     <button
       type="submit"
       class="btn btn-success"
       routerLink="table"
-      [disabled]="!f.valid"
-      (click)="onTableBtnClick()">Table</button>
+      [disabled]="!f.valid">Table</button>
   </div>
 </form>
 
+<div class="container" *ngIf="!selectionIsSubmitted">RESULTS WILL BE HERE...</div>
+
+<app-chart *ngIf="selectionIsSubmitted" [exchangeData]="exchangeData"></app-chart>
 
