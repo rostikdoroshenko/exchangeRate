@@ -13,11 +13,26 @@ export class FormComponent implements OnInit {
   @ViewChild('f') completedForm: NgForm;
   defaultCurrency = 'USD';
   public selectionIsSubmitted = false;
+  public chartBtnIsClicked = false;
+  public tableBtnIsClicked = false;
+
   public exchangeData: any;
 
   constructor(private nbuService: NbuService) { }
 
   ngOnInit(): void {
+  }
+
+  public chartBtnClick(): void {
+    this.selectionIsSubmitted = false;
+    this.tableBtnIsClicked = false;
+    this.chartBtnIsClicked = true;
+  }
+
+  public tableBtnClick(): void {
+    this.selectionIsSubmitted = false;
+    this.chartBtnIsClicked = false;
+    this.tableBtnIsClicked = true;
   }
 
   public onSubmit(): void{
@@ -43,7 +58,7 @@ export class FormComponent implements OnInit {
   private getExchangeRatesForSelectedPeriod(period: string[], currency: string): void {
     from(period)
         .pipe(
-            concatMap(date => this.nbuService.getData(currency, date).pipe(delay(500))),
+            concatMap(date => this.nbuService.getData(currency, date).pipe(delay(100))),
             toArray()
         ).subscribe(result => {
           this.exchangeData = result;

@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { ChartComponent } from './chart/chart.component';
 import { NbuService } from './services/nbu.service';
 import { FormComponent } from './form/form.component';
+import { TableComponent } from './table/table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChartComponent,
-    FormComponent
+    FormComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,

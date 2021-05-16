@@ -49,11 +49,19 @@
         type="submit"
         class="btn btn-success"
         [disabled]="!f.valid"
-        routerLink="chart">Chart</button>
+        (click)="chartBtnClick()"
+        >Chart</button>
+        <button
+        type="submit"
+        class="btn btn-success"
+        (click)="tableBtnClick()"
+        [disabled]="!f.valid"
+        >Table</button>
   </div>
 </form>
 
 <div class="container" *ngIf="!selectionIsSubmitted">RESULTS WILL BE HERE...</div>
 
-<app-chart *ngIf="selectionIsSubmitted" [exchangeData]="exchangeData"></app-chart>
+<app-chart *ngIf="chartBtnIsClicked && selectionIsSubmitted" [exchangeData]="exchangeData"></app-chart>
 
+<app-table *ngIf="tableBtnIsClicked && selectionIsSubmitted" [exchangeData]="exchangeData"></app-table>
